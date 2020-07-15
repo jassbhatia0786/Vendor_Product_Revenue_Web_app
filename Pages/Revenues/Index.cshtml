@@ -1,0 +1,55 @@
+﻿@page
+@model Vendor_Product_Revenue_Web_app.Pages.Revenues.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Revenue</h1>
+
+<p>
+    <a class="btn btn-primary" asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Revenue[0].Product)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Revenue[0].StoreFront)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Revenue[0].Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Revenue[0].TotalIncome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Revenue) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StoreFront.StoreFrontName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalIncome)
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="btn btn-primary" asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a class="btn btn-primary" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

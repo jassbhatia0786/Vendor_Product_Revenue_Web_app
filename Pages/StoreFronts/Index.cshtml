@@ -1,0 +1,42 @@
+﻿@page
+@model Vendor_Product_Revenue_Web_app.Pages.StoreFronts.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Store Fronts</h1>
+
+<p>
+    <a class="btn btn-primary" asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StoreFront[0].StoreFrontName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StoreFront[0].StoreFrontUrl)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.StoreFront) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StoreFrontName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StoreFrontUrl)
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="btn btn-primary" asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a class="btn btn-primary" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
